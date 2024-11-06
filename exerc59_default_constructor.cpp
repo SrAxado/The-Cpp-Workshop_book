@@ -23,7 +23,7 @@ class Track {
       m_trackName = trackName;
     }
 
-    // syntax of a copy constructor
+    // syntax of a copy constructor => similar to what should be the compiler-generated version
     // Track(const Track& track) {
     //   m_lengthInSeconds = track.m_lengthInSeconds;
     //   m_trackName = track.m_trackName;
