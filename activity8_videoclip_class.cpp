@@ -41,14 +41,16 @@ class VideoClip {
     }
 
     VideoClip operator=(VideoClip& videoClip) {
-      m_videoLength = videoClip.m_videoLength;
-      m_videoName = videoClip.m_videoName;
-      m_releaseYear = videoClip.m_releaseYear;
+      if (this != &videoClip) {
+        m_videoLength = videoClip.m_videoLength;
+        m_videoName = videoClip.m_videoName;
+        m_releaseYear = videoClip.m_releaseYear;
 
-      delete[] m_videoData;
-      m_videoData = new char[strlen(videoClip.m_videoData) + 1];
-      strcpy(m_videoData, videoClip.m_videoData);
-      strcat(m_videoData, "cy");  // adds a copy protection code
+        delete[] m_videoData;
+        m_videoData = new char[strlen(videoClip.m_videoData) + 1];
+        strcpy(m_videoData, videoClip.m_videoData);
+        strcat(m_videoData, "cy");  // adds a copy protection code
+      }
 
       return *this;
     }
