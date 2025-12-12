@@ -12,19 +12,6 @@ class Attack {
   public:
     // Defines an Attack
     Attack(const string name, const int attackStat) : m_name(name), m_attackStat(attackStat) {}
-    
-    // Copy constructor
-    Attack(const Attack& attack) 
-      : m_name(attack.m_name), m_attackStat(attack.m_attackStat) {}
-    
-    // Overloads the = operator
-    Attack& operator=(const Attack& rhs) {
-      if (this != &rhs) {
-        m_attackStat = rhs.m_attackStat;
-        m_name = rhs.m_name;
-      }
-      return *this;
-    }
 
     string getName() const { return m_name; }
 
@@ -42,18 +29,6 @@ class Item {
   public:
     // Item's constructor
     Item(const string name, const int healStat) : m_name(name), m_healStat(healStat) {}
-
-    // Item's copy constructor
-    Item(const Item& item) : m_name(item.m_name), m_healStat(item.m_healStat) {}
-
-    // Item's operator overload
-    Item& operator=(const Item& rhs) {
-      if (this != &rhs) {
-        m_name = rhs.m_name;
-        m_healStat = rhs.m_healStat;
-      }
-      return *this;
-    }
 
     string getName() const { return m_name; }
 
@@ -75,36 +50,6 @@ class Character {
         m_attacks(attacks), m_items(items) {
           m_life = 100;
         }
-
-    // Character(vector<Attack*>& attacks) {
-    //   attacks[2]->getAttackStat();
-    // }
-      // : m_attacks(attacks) {}
-
-    // Character(const Character& character) 
-    //   : m_strength(character.m_strength),
-    //     m_defense(character.m_defense),
-    //     m_attacks(character.m_attacks), m_items(character.m_items) {
-    //       m_life = 100;
-    //       // m_name = new char[strlen(character.m_name) + 3];
-    //       // strcpy(m_name, character.m_name);
-    //       // strcpy(&m_name[strlen(character.m_name)], "_X");
-    // }
-
-    // Character's copy constructor
-    Character& operator=(const Character& rhs) {
-      if (this != &rhs) {
-        m_life = 100;
-        // m_name = new char[strlen(rhs.m_name) + 3];
-        // strcpy(m_name, rhs.m_name);
-        // strcpy(&m_name[strlen(rhs.m_name)], "_X");
-        m_strength = rhs.m_strength;
-        m_defense = rhs.m_defense;
-        m_attacks = rhs.m_attacks;
-        m_items = rhs.m_items;
-      }
-      return *this;
-    }
 
     // Performs an attack with a random attack from the attack vector's list to a specific character
     void doAttack(Character* character) {
@@ -181,7 +126,6 @@ class Character {
       cout << endl;
     }
 
-  
     private:
     string m_name;
     int m_life;
@@ -284,23 +228,11 @@ class Battle {
 
 
 int main() {
-  // Attack attack1("Punch", 33);
-  // Attack attack2("Kick", 38);
-  // Attack attack3("Shout", 17);
-  // Attack attack4("Sword To The Face", 29);
-  // Attack attack5("Flame Breath", 50);
 
   vector<Attack*> attacks {
     new Attack("Punch", 33), new Attack("Kick", 38), new Attack("Shout", 17),
     new Attack("Sword To The Face", 29), new Attack("Flame Breath", 50)
   };
-
-  // Item item1("Aspirin", 27);
-  // Item item2("Bagaço", 50);
-  // Item item3("Bandage", 30);
-  // Item item4("Old Grog", 21);
-  // Item item5("Scale Oil", 20);
-  // Item item6("Breath of Life", 55);
 
   vector<Item*> items {
     new Item("Aspirin", 27), new Item("Bagaço", 50), new Item("Old Grog", 21),
